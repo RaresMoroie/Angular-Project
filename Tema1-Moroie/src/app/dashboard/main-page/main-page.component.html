@@ -1,0 +1,34 @@
+<app-header></app-header>
+<router-outlet></router-outlet>
+<body>
+    <div id = "Welcomes">
+        <img id="frontend_image" src = "https://www.desktopbackground.org/download/3440x1440/2014/11/17/857535_house-wallpaper-architecture-exterior-house-mansion-pool_3614x2406_h.jpg" alt="frontend dev">
+        <div class="text-overlay">
+            <h1 class="welcome-text">Welcome!</h1>
+            <button class="all-button">
+                See all homes
+            </button>
+        </div>
+    </div>
+    <h1 class="featured-heading">Homes for you:</h1>
+    <div id="featured-container">
+        <button (click)="decrementIndices()" class="cards-button">⬅</button>
+        <app-house-card
+          *ngFor="let house of HousesArray | slice:startSliceIndex:endSliceIndex"
+          [house]="house"
+        ></app-house-card>
+        <button (click)="incrementIndices()" class="cards-button">⮕</button>
+    </div>
+    <h2 class="featured-heading">Browse all homes:</h2>
+    <div class="featured-heading">
+    <input type="text" [(ngModel)] = "searchValue" /><button (click)="searchHouse()">
+        Search
+      </button>
+    </div>
+    <div id="browse-all">
+        <app-house-card
+          *ngFor="let house of SearchedHouses"
+          [house]="house"
+        ></app-house-card>
+    </div>
+</body>
